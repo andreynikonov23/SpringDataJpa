@@ -44,6 +44,7 @@ public class ViewController {
 		clientService.update(client);
 		System.out.println(clientService.selectAll());
 		model.addAttribute("banks", bankService.selectAll());
+		//
 		return "index";
 	}
 }
