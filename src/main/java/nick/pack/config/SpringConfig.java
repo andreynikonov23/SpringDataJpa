@@ -66,10 +66,10 @@ private final ApplicationContext context;
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource driverManager = new DriverManagerDataSource();
-		driverManager.setDriverClassName("org.postgresql.Driver");
-		driverManager.setUrl("jdbc:postgresql://localhost:5432/bank_db");
-		driverManager.setUsername("postgres");
-		driverManager.setPassword("1234");
+		driverManager.setDriverClassName("com.mysql.jdbc.Driver");
+		driverManager.setUrl("jdbc:mysql://localhost:3306/bank_db?serverTimezone=UTC");
+		driverManager.setUsername("root");
+		driverManager.setPassword("1111");
 		return driverManager;
 	}
 
@@ -86,7 +86,7 @@ private final ApplicationContext context;
 		
 	//JpaTransactionManager configuration
 	@Bean
-	public JpaTransactionManager jpaTransactionManager() {
+	public JpaTransactionManager transactionManager() {
 		JpaTransactionManager manager = new JpaTransactionManager();
 		manager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return manager;

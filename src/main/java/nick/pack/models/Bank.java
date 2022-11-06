@@ -1,14 +1,17 @@
 package nick.pack.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import lombok.Data;
 
-@Data
+
 @Entity
 public class Bank {
 	@Id
@@ -17,8 +20,10 @@ public class Bank {
 	private String name;
 	
 	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn (name = "worker")
 	private Worker worker;
 	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn (name = "client")
 	private Client client;
 	
 	
@@ -31,10 +36,41 @@ public class Bank {
 	public Bank() {
 		
 	}
+	public Bank(String name, Worker worker, Client client) {
+		super();
+		this.name = name;
+		this.worker = worker;
+		this.client = client;
+	}
 	
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Worker getWorker() {
+		return worker;
+	}
+	public void setWorker(Worker worker) {
+		this.worker = worker;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
 	@Override
 	public String toString() {
-		return name;
+		return String.format("%s: worker (%s); client (%s)", name, worker, client);
 	}
 }

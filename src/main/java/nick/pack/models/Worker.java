@@ -2,12 +2,13 @@ package nick.pack.models;
 
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import lombok.Data;
 
 @Data
@@ -20,7 +21,7 @@ public class Worker {
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
-	@Column(name = "work_status")
+	@Column(name = "worker_status")
 	private String workStatus;
 	private String phone;
 	
@@ -38,8 +39,45 @@ public class Worker {
 	public Worker() {
 		
 	}
+	public Worker(String firstName, String lastName, String workStatus, String phone) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.workStatus = workStatus;
+		this.phone = phone;
+	}
 	
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getWorkStatus() {
+		return workStatus;
+	}
+	public void setWorkStatus(String workStatus) {
+		this.workStatus = workStatus;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	@Override
 	public String toString() {
 		return workStatus + ": " + firstName + " " + lastName;

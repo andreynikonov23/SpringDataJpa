@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Hello</h1>
-</body>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>Hello</h1>
+		<div th:each="bank : ${banks}">
+			<p th:text="${bank}">
+		</div>
+		<a href="">Добавить банк</a>
+		<a href="">Добавить работника</a>
+		
+	</body>
 </html>
